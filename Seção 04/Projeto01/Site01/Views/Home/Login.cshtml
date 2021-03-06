@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="/Home/Login">
+            <div class="form-group">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" name="email" class="form-control" id="nome" placeholder="Digite seu email">
+                @Html.ValidationMessage("email")
+            </div>
+            <div class="form-group">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="text" name="senha" class="form-control" id="senha" placeholder="Digite sua senha">
+                @Html.ValidationMessage("senha")
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        @ViewBag.Mensagem
+    </div>
+</body>
+</html>
