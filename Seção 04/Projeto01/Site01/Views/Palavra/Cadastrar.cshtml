@@ -1,4 +1,4 @@
-﻿
+﻿@model  Site01.Models.Palavra
 @{
     Layout = null;
 }
@@ -16,9 +16,11 @@
 
     <div class="container">
         <form method="post">
+
+            <input type="hidden" name="Id" value="@Model.Id" />
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite um nome">
+                <input type="text" name="nome" value="@Model.Nome" class="form-control" id="nome" placeholder="Digite um nome">
                 @Html.ValidationMessage("nome")
             </div>
             <div class="mb-3">

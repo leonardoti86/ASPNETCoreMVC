@@ -20,8 +20,8 @@ namespace Site01.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
-            ViewBag.Palavras = _db.Palavras.ToList();
-            return View();
+            var palavras = _db.Palavras.ToList();
+            return View(palavras);
         }
 
         //CRUD
@@ -35,13 +35,23 @@ namespace Site01.Controllers
         [HttpPost]
         public ActionResult Cadastrar([FromForm]Palavra palavra)
         {
+            if (ModelState.IsValid)
+            {
+                _db.Palavras.Add(palavra);
+                _db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
         [HttpGet]
-        public ActionResult Atualizar()
+        public ActionResult Atualizar(int Id)
         {
-            return View("Cadastrar");
+            Palavra palavra = _db.Palavras.Find(Id);
+
+            return View("Cadastrar", palavra);
         }
 
         [HttpPost]
