@@ -17,11 +17,18 @@ namespace Site01
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //usar o MVC
             services.AddMvc();
+
+            //usar o EF
             services.AddDbContext<DatabaseContext>(options => {
                 //Providers - bibliotecas de conexões de banco dos fabricantes. SqlServer, MySql, etc
                 options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=site01;Integrated Security=true;");
             });
+
+            //usar controle de sessão
+            services.AddDistributedMemoryCache();
+            services.AddSession();
 
         }
 
@@ -32,6 +39,8 @@ namespace Site01
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSession();
 
             app.UseStaticFiles();
 
