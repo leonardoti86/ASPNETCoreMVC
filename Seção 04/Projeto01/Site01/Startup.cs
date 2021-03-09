@@ -23,7 +23,8 @@ namespace Site01
             //usar o EF
             services.AddDbContext<DatabaseContext>(options => {
                 //Providers - bibliotecas de conexões de banco dos fabricantes. SqlServer, MySql, etc
-                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=site01;Integrated Security=true;");
+                //options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=site01;Integrated Security=true;");
+                options.UseSqlite("Data Source =Database\\site01.db");
             });
 
             //usar controle de sessão
